@@ -1,0 +1,14 @@
+version: '2'
+services:
+    xeyecrm-app:
+        image: xeyecrm
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://xeyecrm-postgresql:5432/XEyeCRM
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    xeyecrm-postgresql:
+        extends:
+            file: postgresql.yml
+            service: xeyecrm-postgresql
